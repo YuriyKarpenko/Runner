@@ -1,0 +1,57 @@
+<StackPanel  x:Class="Runner.Views.OptionItemView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:m="using:Runner.Models"
+             xmlns:v="using:Runner.Views"
+             xmlns:vm="using:Runner.ViewModels"
+             mc:Ignorable="d"  d:DesignHeight="450" d:DesignWidth="400"
+     >
+
+  <DockPanel>
+    <TextBlock DockPanel.Dock="Left" Text="Description:" Classes="label"/>
+    <TextBox Text="{Binding OptionItem.Description}" Classes="field"/>
+  </DockPanel>
+  <DockPanel>
+    <TextBlock DockPanel.Dock="Left" Text="Programm to run:" Classes="label"/>
+    <Button DockPanel.Dock="Right" Command="{Binding CmdOpen}" Tag="{StaticResource pg_File}" Classes="field pb cmd_h"/>
+    <TextBox Text="{Binding OptionItem.ProgramPath}" Classes="field"/>
+  </DockPanel>
+  <!--<GroupBox Header="Parameter list:">-->
+    <StackPanel>
+      <StackPanel Orientation="Horizontal" Margin="0, 5">
+        <Button Command="{Binding CmdRefresh}" Tag="{StaticResource pg_Refresh}" Classes="pg cmd_h"/>
+        <Button Command="{Binding CmdAdd}" Tag="{DynamicResource pg_Plus}" Classes="pg cmd_h"/>
+        <Button Command="{Binding CmdDel}" Tag="{DynamicResource pg_Delete}" Classes="pr cmd_h"/>
+      </StackPanel>
+      <ListBox Items="{Binding Parameters}"
+               SelectedItem="{Binding Selected}">
+        <ListBox.ItemTemplate>
+          <DataTemplate DataType="{x:Type vm:OptionParameterViewModel}">
+            <Border BorderThickness="2" BorderBrush="Aqua">
+              <Grid ColumnDefinitions="Auto, *" Background="Gray" >
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="1"/>
+                  <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="1"/>
+                  <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="1"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Column="0" Grid.Row="1" Text="Type: " Classes="label"/>
+                <ComboBox Grid.Column="1" Grid.Row="1" Items="{Binding ParameterTypes}" SelectedItem="{Binding ParameterItem.ParameterType}" Classes="field"/>
+
+                <TextBlock Grid.Column="0" Grid.Row="3" Text="Value: " Classes="label"/>
+                <DockPanel Grid.Column="1" Grid.Row="3">
+                  <Button DockPanel.Dock="Right" Command="{Binding CmdSelectFolder}" Content="{StaticResource pg_Folder2Add}" Classes="po field"/>
+                  <TextBox Text="{Binding ParameterItem.Value}" Classes="field"/>
+                </DockPanel>
+              </Grid>
+            </Border>
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
+    </StackPanel>
+  <!--</GroupBox>-->
+</StackPanel>

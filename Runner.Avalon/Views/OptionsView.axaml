@@ -1,0 +1,21 @@
+<UserControl x:Class="Runner.Views.OptionsView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:v="using:Runner.Views"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
+      >
+  <StackPanel Orientation="Vertical">
+    <StackPanel Orientation="Horizontal" Margin="3" Classes="menu">
+      <Button DataContext="{Binding CmdAdd}" Classes="pg" Content="{StaticResource pg_Plus}"/>
+      <Button DataContext="{Binding CmdDel}" Classes="pr" Content="{StaticResource pg_Delete}"/>
+      <Button DataContext="{Binding CmdSave}" Classes="pb" Content="{StaticResource pg_Save}"/>
+    </StackPanel>
+    		
+    <ListBox Items="{Binding OptionItems}" 
+			 SelectedItem="{Binding Selected.Value}"             
+             />
+
+  </StackPanel>
+</UserControl>

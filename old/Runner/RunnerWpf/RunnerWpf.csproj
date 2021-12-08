@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\RunnerAvalon\Models\OptionItem.cs" Link="Models\OptionItem.cs" />
+    <Compile Include="..\RunnerAvalon\Models\Options.cs" Link="Models\Options.cs" />
+    <Compile Include="..\RunnerAvalon\Models\ParameterItem.cs" Link="Models\ParameterItem.cs" />
+    <Compile Include="..\RunnerAvalon\Models\ParameterType.cs" Link="Models\ParameterType.cs" />
+    <Compile Include="..\RunnerAvalon\ViewModels\BaseViewModel.cs" Link="ViewModels\BaseViewModel.cs" />
+    <Compile Include="..\RunnerAvalon\ViewModels\CommandWrapper.cs" Link="ViewModels\CommandWrapper.cs" />
+    <Compile Include="..\RunnerAvalon\ViewModels\MainWindowViewModel.cs" Link="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="..\RunnerAvalon\ViewModels\OptionItemViewModel.cs" Link="ViewModels\OptionItemViewModel.cs" />
+    <Compile Include="..\RunnerAvalon\ViewModels\OptionParameterViewModel.cs" Link="ViewModels\OptionParameterViewModel.cs" />
+    <Compile Include="..\RunnerAvalon\ViewModels\OptionsViewModel.cs" Link="ViewModels\OptionsViewModel.cs" />
+    <Compile Include="..\RunnerAvalon\ViewModels\RunItemViewModel.cs" Link="ViewModels\RunItemViewModel.cs" />
+    <Compile Include="..\RunnerAvalon\ViewModels\RunParameterViewModel.cs" Link="ViewModels\RunParameterViewModel.cs" />
+    <Compile Include="..\RunnerAvalon\ViewModels\RunViewModel.cs" Link="ViewModels\RunViewModel.cs" />
+    <Compile Include="..\RunnerAvalon\ViewModels\Utils.cs" Link="ViewModels\Utils.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="ReactiveUI" Version="16.3.10" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,130 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:Runner"
+             x:Class="Runner.App">
+	<Application.DataTemplates>
+		<local:ViewLocator/>
+
+		<DataTemplate DataType="{x:Type PathGeometry}">
+			<Path Data="{Binding}"/>
+		</DataTemplate>
+
+	</Application.DataTemplates>
+
+	<Application.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceInclude Source="/DictionaryImage.axaml"/>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Application.Resources>
+
+	<Application.Styles>
+		<FluentTheme Mode="Dark"/>
+
+		<Style Selector="Path">
+			<Setter Property="Height" Value="18"/>
+			<Setter Property="Width" Value="18"/>
+			<Setter Property="Stretch" Value="Uniform"/>
+		</Style>
+		<Style Selector="Button.pr Path">
+			<Setter Property="Fill" Value="Red"/>
+		</Style>
+		<Style Selector="Button.pg Path">
+			<Setter Property="Fill" Value="Green"/>
+		</Style>
+		<Style Selector="Button.pb Path">
+			<Setter Property="Fill" Value="Blue"/>
+		</Style>
+		<Style Selector="Button.po Path">
+			<Setter Property="Fill" Value="Orange"/>
+		</Style>
+
+		<Style Selector="Button.pg_plus">
+			<Setter Property="Tag" Value="{StaticResource pg_Plus}"/>
+		</Style>
+
+		<Style Selector="Button.cmd" >
+			<Setter Property="Margin" Value="3, 0"/>
+			<Setter Property="ContentTemplate">
+				<Setter.Value>
+					<DataTemplate>
+						<StackPanel Orientation="Horizontal">
+							<ContentControl Content="{Binding $parent[Button].Content}"/>
+							<TextBlock Margin="3, 0" VerticalAlignment="Center" Text="{Binding $parent[Button].Command.Text}"/>
+						</StackPanel>
+					</DataTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+		<Style Selector="Button.cmd_h" >
+			<Setter Property="Command" Value="{Binding Command}"/>
+			<Setter Property="Margin" Value="3, 0"/>
+			<Setter Property="ContentTemplate">
+				<Setter.Value>
+					<DataTemplate>
+						<StackPanel Orientation="Horizontal">
+							<ContentControl Content="{Binding $parent[Button].Tag}"/>
+							<TextBlock Margin="3, 0" VerticalAlignment="Center" Text="{Binding $parent[Button].Command.Name}"/>
+						</StackPanel>
+					</DataTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+		<Style Selector=":is(Control).field">
+			<Setter Property="Margin" Value="5"/>
+			<Setter Property="HorizontalAlignment" Value="Stretch" />
+			<Setter Property="VerticalAlignment" Value="Center" />
+		</Style>
+		<Style Selector="TextBlock.label">
+			<Setter Property="Margin" Value="5"/>
+			<Setter Property="VerticalAlignment" Value="Center" />
+			<Setter Property="TextAlignment" Value="Right" />
+		</Style>
+
+		<Style Selector=":is(ItemsControl).menu">
+			<Setter Property="ItemsPanel">
+				<Setter.Value>
+					<ItemsPanelTemplate>
+						<StackPanel Orientation="Horizontal"/>
+					</ItemsPanelTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+		<Style Selector=".menu Button" >
+			<Setter Property="Command" Value="{Binding Command}"/>
+			<Setter Property="Margin" Value="3, 0"/>
+			<Setter Property="ContentTemplate">
+				<Setter.Value>
+					<DataTemplate>
+						<StackPanel Orientation="Horizontal">
+							<ContentControl Name="image" Content="{Binding $parent[Button].Content}"/>
+							<TextBlock Margin="3, 0" VerticalAlignment="Center" Text="{Binding $parent[Button].DataContext.Name}"/>
+						</StackPanel>
+					</DataTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+		<!--
+    <Style Selector=":is(ContentControl).red">
+      <Setter Property="Foreground" Value="Red"/>
+    </Style>
+    <Style Selector=":is(Control).hcenter">
+      <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+    <Style Selector=":is(Control).vcenter">
+      <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+	<StyleInclude x:Class="Runner.App"    Source="/DictionaryImage.xaml"/>
+	-->
+
+		<Style Selector=":is(ListBoxItem)">
+			<Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+		</Style>
+
+	</Application.Styles>
+</Application>

@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31613.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RunnerWpf", "RunnerWpf\RunnerWpf.csproj", "{190C8D2D-80A5-4654-BEAF-A159A11BD856}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RunnerAvalon", "RunnerAvalon\RunnerAvalon.csproj", "{A21CFEAB-FF3E-42A3-A172-B68ED2231D96}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "vm", "vm", "{8236A88B-3957-480B-9739-720660B4733B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{190C8D2D-80A5-4654-BEAF-A159A11BD856}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{190C8D2D-80A5-4654-BEAF-A159A11BD856}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{190C8D2D-80A5-4654-BEAF-A159A11BD856}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{190C8D2D-80A5-4654-BEAF-A159A11BD856}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A21CFEAB-FF3E-42A3-A172-B68ED2231D96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A21CFEAB-FF3E-42A3-A172-B68ED2231D96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A21CFEAB-FF3E-42A3-A172-B68ED2231D96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A21CFEAB-FF3E-42A3-A172-B68ED2231D96}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C099526F-DF7A-4F09-8B91-E72E69C74D81}
+	EndGlobalSection
+EndGlobal

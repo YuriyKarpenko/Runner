@@ -1,0 +1,53 @@
+<Window x:Class="Runner.Views.MainWindow"
+        xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:v="using:Runner.Views"
+        xmlns:vm="using:Runner.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="250"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Runner">
+
+
+  <Window.DataTemplates>
+    <!--<local:ViewLocator/>-->
+    <DataTemplate DataType="{x:Type vm:OptionsViewModel}">
+      <v:OptionsView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:OptionItemViewModel}">
+      <v:OptionItemView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:RunViewModel}">
+      <ItemsControl Items="{Binding RunList}" />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:RunItemViewModel}">
+      <v:RunItemView />
+    </DataTemplate>
+
+  </Window.DataTemplates>
+
+  <Grid RowDefinitions="auto, auto, *, auto">
+    <ListBox Grid.Row="1" Name="menu"
+             Items="{Binding Pages}"
+             SelectedItem="{Binding SelectedPage}"
+                 >
+      <ListBox.ItemsPanel>
+        <ItemsPanelTemplate>
+          <StackPanel Orientation="Horizontal"/>
+        </ItemsPanelTemplate>
+      </ListBox.ItemsPanel>
+      
+      <ListBox.ItemTemplate>
+        <DataTemplate>
+          <TextBlock Text="{Binding .}"/>
+        </DataTemplate>
+      </ListBox.ItemTemplate>
+    </ListBox>
+    
+    <ContentControl Grid.Row="2" Content="{Binding ViewModel}"/>
+  </Grid>
+</Window>

@@ -1,0 +1,47 @@
+<Window x:Class="Runner.Views.MainWindow"
+        xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:v="using:Runner.Views"
+        xmlns:vm="using:Runner.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="250"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Runner">
+
+
+  <Window.DataTemplates>
+
+    <DataTemplate DataType="{x:Type vm:CommandWrapper}">
+      <Button />
+    </DataTemplate>
+	  
+    <!--
+	<v:ViewLocator/>
+	
+    <DataTemplate DataType="{x:Type vm:VmOptions}">
+      <v:OptionsView />
+    </DataTemplate>
+	-->
+
+    <DataTemplate DataType="{x:Type vm:VmRun}">
+      <ItemsControl Items="{Binding RunList}" />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:VmRunItem}">
+      <v:RunItemView />
+    </DataTemplate>
+
+  </Window.DataTemplates>
+
+  <Grid RowDefinitions="auto, auto, *, auto">
+	  
+    <ListBox Grid.Row="1" Classes="menu"
+             Items="{Binding Pages}"
+             SelectedItem="{Binding SelectedPage.Value}"
+                 />
+    
+    <ContentControl Grid.Row="2" Content="{Binding ViewModel.Value}"/>
+	  
+  </Grid>
+</Window>
