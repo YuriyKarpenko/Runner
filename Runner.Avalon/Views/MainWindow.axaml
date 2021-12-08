@@ -9,31 +9,6 @@
         Icon="/Assets/avalonia-logo.ico"
         Title="Runner">
 
-
-  <Window.DataTemplates>
-
-    <DataTemplate DataType="{x:Type vm:CommandWrapper}">
-      <Button />
-    </DataTemplate>
-	  
-    <!--
-	<v:ViewLocator/>
-	
-    <DataTemplate DataType="{x:Type vm:VmOptions}">
-      <v:OptionsView />
-    </DataTemplate>
-	-->
-
-    <DataTemplate DataType="{x:Type vm:VmRun}">
-      <ItemsControl Items="{Binding RunList}" />
-    </DataTemplate>
-
-    <DataTemplate DataType="{x:Type vm:VmRunItem}">
-      <v:RunItemView />
-    </DataTemplate>
-
-  </Window.DataTemplates>
-
   <Grid RowDefinitions="auto, auto, *, auto">
 	  
     <ListBox Grid.Row="1" Classes="menu"
