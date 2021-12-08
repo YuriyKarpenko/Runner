@@ -50,7 +50,7 @@ namespace Runner.ViewModels
             => page switch
             {
                 Page.Options => new OptionsViewModel(_options),
-                Page.Runner => new VmRun(_options),
+                Page.Runner => new RunViewModel(_options),
                 _ => throw new IndexOutOfRangeException()
             };
 
