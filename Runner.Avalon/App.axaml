@@ -22,7 +22,7 @@
 	<Application.Styles>
 		<FluentTheme Mode="Dark"/>
 
-		<Style Selector="Path">
+		<Style Selector="Button Path">
 			<Setter Property="Height" Value="18"/>
 			<Setter Property="Width" Value="18"/>
 			<Setter Property="Stretch" Value="Uniform"/>
@@ -102,7 +102,7 @@
 					<DataTemplate>
 						<StackPanel Orientation="Horizontal">
 							<ContentControl Name="image" Content="{Binding $parent[Button].Content}"/>
-							<TextBlock Margin="3, 0" VerticalAlignment="Center" Text="{Binding $parent[Button].DataContext.Name}"/>
+							<TextBlock Name="commandText" Margin="3, 0" VerticalAlignment="Center" Text="{Binding $parent[Button].DataContext.Name}"/>
 						</StackPanel>
 					</DataTemplate>
 				</Setter.Value>

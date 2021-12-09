@@ -4,6 +4,8 @@
     {
         public ParameterType ParameterType { get; set; }
         public string? Value { get; set; }
-        public bool IsValid => !string.IsNullOrEmpty(Value);
+        public bool IncludeExtensions { get; set; }
+        public bool IncludePath { get; set; }
+
     }
 }
