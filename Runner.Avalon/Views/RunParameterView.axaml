@@ -1,0 +1,14 @@
+<Border xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Runner.Views.RunParameterView"
+		>
+	<StackPanel>
+		<ComboBox IsVisible="{Binding IsCombo}" SelectedItem="{Binding Value.Value}" Items="{Binding List}" Classes="field"/>
+		<TextBox IsVisible="{Binding IsText}" Text="{Binding Value.Value}" IsReadOnly="True" Classes="field"/>
+		<!--<Border BorderBrush="Red" BorderThickness="{Binding ErrorBorderThickness.Value, Converter={x:Static ThicknessConvrter} }"/>-->
+		<Border BorderBrush="Red" BorderThickness="1" IsVisible="{Binding !IsValid.Value}"/>
+	</StackPanel>
+</Border>
