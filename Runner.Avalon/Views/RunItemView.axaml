@@ -1,0 +1,25 @@
+<Border x:Class="Runner.Views.RunItemView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             BorderBrush="Red" BorderThickness="0">
+	<Expander IsExpanded="{Binding IsExpanded}" Header="{Binding Description}" 
+			  HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+		<Grid ColumnDefinitions="Auto, 1, *" RowDefinitions="Auto, Auto, Auto, *">
+			<TextBlock Grid.Row="1" Text="Path:" Classes="label"/>
+			<TextBox Grid.Row="1" Grid.Column="2" Text="{Binding ProgramPath}" Classes="field" IsReadOnly="True"/>
+
+			<DockPanel Grid.Row="2" Grid.ColumnSpan="3" Classes="menu">
+				<Button DockPanel.Dock="Left" DataContext="{Binding CmdRefresh}" Content="{StaticResource pg_Refresh}" Classes="pg"/>
+				<Button DockPanel.Dock="Left" DataContext="{Binding CmdRun}" Content="{StaticResource pg_Ok}" Classes="pg"/>
+				<DockPanel>
+					<TextBox Text="{Binding RunPath.Value}" IsReadOnly="True" Classes="field"/>
+				</DockPanel>
+			</DockPanel>
+			
+			<ItemsControl Grid.Row="3" Grid.ColumnSpan="3" Items="{Binding Parameters}"/>
+		</Grid>
+	</Expander>
+</Border>
