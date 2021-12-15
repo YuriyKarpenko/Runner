@@ -7,8 +7,8 @@ using Avalonia.Markup.Xaml;
 
 namespace Runner.Views
 {
-    public partial class OptionItemView : Grid
-    {
+    public partial class OptionItemView : Border
+	{
         public OptionItemView()
         {
             InitializeComponent();

@@ -1,4 +1,4 @@
-<Grid  x:Class="Runner.Views.OptionItemView"
+<Border  x:Class="Runner.Views.OptionItemView"
              xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -6,27 +6,36 @@
              xmlns:m="using:Runner.Models"
              xmlns:v="using:Runner.Views"
              xmlns:vm="using:Runner.ViewModels"
-             mc:Ignorable="d"  d:DesignHeight="450" d:DesignWidth="400"
-	ColumnDefinitions="Auto, 1, *" RowDefinitions="Auto, Auto, Auto, *"  >
+             mc:Ignorable="d"  d:DesignHeight="450" d:DesignWidth="400">
+  <Expander Header="{Binding OptionItem.Description}" >
+    <Grid	ColumnDefinitions="Auto, 1, *" RowDefinitions="Auto, Auto, Auto, *">
 
-	<TextBlock Grid.Row="1" Text="Description:" Classes="label"/>
-	<TextBox Grid.Row="1" Grid.Column="2" Text="{Binding OptionItem.Description}" Classes="field"/>
+      <TextBlock Grid.Row="1" Text="Description:" Classes="label"/>
+      <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding OptionItem.Description}" Classes="field"/>
 
-	<TextBlock Grid.Row="2" Text="Programm to run:" Classes="label"/>
-	<DockPanel Grid.Row="2" Grid.Column="2">
-		<Button DockPanel.Dock="Right" Click="OpenFile" Content="{StaticResource pg_File}" Classes="field pb"/>
-		<TextBox Name="PathFile" Text="{Binding OptionItem.ProgramPath}" Classes="field"/>
-	</DockPanel>
+      <TextBlock Grid.Row="2" Text="Programm to run:" Classes="label"/>
+      <DockPanel Grid.Row="2" Grid.Column="2">
+        <Button DockPanel.Dock="Right" Click="OpenFile" Content="{StaticResource pg_File}" Classes="field pb"/>
+        <TextBox Name="PathFile" Text="{Binding OptionItem.ProgramPath}" Classes="field"/>
+      </DockPanel>
 
-	<StackPanel Grid.Row="3" Grid.ColumnSpan="3">
-		<StackPanel Orientation="Horizontal" Margin="0, 5" Classes="menu">
-			<Button DataContext="{Binding CmdRefresh}" Content="{StaticResource pg_Refresh}" Classes="pg"/>
-			<Button DataContext="{Binding CmdAdd}" Content="{StaticResource pg_Plus}" Classes="pg"/>
-			<Button DataContext="{Binding CmdDel}" Content="{StaticResource pg_Delete}" Classes="pr"/>
-		</StackPanel>
+      <StackPanel Grid.Row="3" Grid.ColumnSpan="3">
+        <StackPanel Orientation="Horizontal" Margin="0, 5" Classes="menu">
+          <Button DataContext="{Binding CmdRefresh}" Content="{StaticResource pg_Refresh}" Classes="pg"/>
+          <Button DataContext="{Binding CmdAdd}" Content="{StaticResource pg_Plus}" Classes="pg"/>
+          <Button DataContext="{Binding CmdDel}" Content="{StaticResource pg_Delete}" Classes="pr"/>
+        </StackPanel>
 
-		<ListBox Items="{Binding Parameters}"
-				 SelectedItem="{Binding Selected.Value}"/>
+        <ListBox Items="{Binding Parameters}"
+                 SelectedItem="{Binding Selected.Value}">
+          <ListBox.ItemsPanel>
+            <ItemsPanelTemplate>
+              <WrapPanel/>
+            </ItemsPanelTemplate>
+          </ListBox.ItemsPanel>
+        </ListBox>
 
-	</StackPanel>
-</Grid>
+      </StackPanel>
+    </Grid>
+  </Expander>
+</Border>

@@ -4,7 +4,7 @@ using Avalonia.Markup.Xaml;
 
 namespace Runner.Views
 {
-	public partial class OptionsView : UserControl
+	public partial class OptionsView : StackPanel
 	{
 		public OptionsView()
 		{

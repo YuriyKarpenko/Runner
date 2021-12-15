@@ -8,15 +8,16 @@
         mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="250"
         Icon="/Assets/avalonia-logo.ico"
         Title="Runner">
+  <ScrollViewer>
+    <Grid RowDefinitions="auto, auto, *, auto">
 
-  <Grid RowDefinitions="auto, auto, *, auto">
-	  
-    <ListBox Grid.Row="1" Classes="menu"
-             Items="{Binding Pages}"
-             SelectedItem="{Binding SelectedPage.Value}"
+      <ListBox Grid.Row="1" Classes="menu"
+               Items="{Binding Pages}"
+               SelectedItem="{Binding SelectedPage.Value}"
                  />
-    
-    <ContentControl Grid.Row="2" Content="{Binding ViewModel.Value}"/>
-	  
-  </Grid>
+
+      <ContentControl Grid.Row="2" Content="{Binding ViewModel.Value}"/>
+
+    </Grid>
+  </ScrollViewer>
 </Window>
