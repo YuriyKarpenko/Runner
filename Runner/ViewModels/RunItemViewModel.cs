@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Reactive;
 using System.Reactive.Linq;
 
@@ -9,11 +8,10 @@ using Runner.Models;
 
 namespace Runner.ViewModels
 {
-    class RunItemViewModel : VmBase
+	class RunItemViewModel : VmBase
     {
         private readonly OptionItem _optionItem;
         private System.Diagnostics.Process? cmd;
-        private IObservable<bool> canRun;
 
         public RunItemViewModel(OptionItem optionItem)
         {
@@ -23,16 +21,15 @@ namespace Runner.ViewModels
                 .Select(i => new RunParameterViewModel(_optionItem, i))
                 .ToArray();
 
-            canRun = Parameters.Select(i => i.IsValid)
-                .Merge().Select(CanActRun); //  ok
-            //.ToObservable().Subscribe(i => CanActRun());  //  bad (( схуяли?
-            //.CombineLatest(i => i.All(CanActRun));
-
-            RunPath = canRun
+            RunPath = Parameters 
+                .Select(i => i.Value)
+                .Merge()
                 .Select(CreateRunPath)
                 .ToReadOnlyReactiveProperty();
 
             CmdRefresh = CommandWrapper.Create("Refresh", ActRefresh);
+
+            var canRun = RunPath.Select(i => !string.IsNullOrEmpty(i));
             CmdRun = CommandWrapper.Create("RUN", ActRun, canRun);
         }
 
@@ -73,18 +70,18 @@ namespace Runner.ViewModels
             };
 
             cmd = System.Diagnostics.Process.Start(psi);
-            cmd.StandardInput.WriteLine(RunPath);
+            cmd.StandardInput.WriteLine(RunPath.Value);
             //cmd.StandardInput.Flush();
 
             //cmd.WaitForExit();
         }
 
-        private bool CanActRun(bool val)
+        private bool CanActRun(string? poh)
             => !string.IsNullOrEmpty(ProgramPath) && Parameters.All(i => i.IsValid.Value);
 
-        private string? CreateRunPath(bool isValid)
+        private string? CreateRunPath(string? value)
         {
-            if (isValid)
+            if (CanActRun(value))
             {
                 var paramsList = Parameters
                     .Select(i => i.Value.Value)
@@ -95,9 +92,9 @@ namespace Runner.ViewModels
             return null;
         }
 
-        private static string NormalizeItem(string value)
+        private static string? NormalizeItem(string? value)
         {
-            return value.Contains(" ")
+            return value?.Contains(" ") == true
                 ? $"\"{value}\""  //  экранирование
                 : value;
         }
